@@ -8,13 +8,13 @@ const signInUser = async (req, res) => {
         // Check if the user already exists
         const user = await UserModel.findOne({ email: email });
         if (user) {
-            return res.status(400).json({ success: false, message: "User already exists" }); // Return here to stop further execution
+            return res.status(400).json({ success: false, message: "User already exists" });
         }
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
         if (!hashedPassword) {
-            return res.status(400).json({ success: false, message: "Password not hashed" }); // Return here to stop further execution
+            return res.status(400).json({ success: false, message: "Password not hashed" });
         }
 
         // Create a new user
