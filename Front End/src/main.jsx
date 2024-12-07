@@ -11,6 +11,8 @@ import Login from './Components/Pages/Login/Login';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import { Toaster } from 'react-hot-toast';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
+import { Provider } from 'react-redux';
+import store from './redux/store/store';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +39,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
-    <Toaster />
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+      <Toaster />
+    </Provider>
   </React.StrictMode >
 )

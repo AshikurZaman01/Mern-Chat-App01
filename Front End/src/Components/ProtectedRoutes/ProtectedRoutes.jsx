@@ -9,6 +9,7 @@ const ProtectedRoutes = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
+
     const getLogingUser = async () => {
         try {
             const response = await getLoggedUser();
