@@ -21,7 +21,7 @@ const Login = () => {
         try {
             const response = await loginUser(user);
 
-            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('token', response.token);
 
             if (response.success) {
                 toast.success(response.message);
@@ -35,7 +35,7 @@ const Login = () => {
                 toast.error(response.message);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data.message);
             toast.error(error.response.data.message);
         } finally {
             setLoading(false);
