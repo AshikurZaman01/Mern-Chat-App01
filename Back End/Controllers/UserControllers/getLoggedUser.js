@@ -9,11 +9,12 @@ const getLoggedUser = async (req, res) => {
             return res.status(200).json({ message: "User not found" })
         }
 
-        return res.status(200).json({ message: "user fetch successfully", user })
+        return res.status(200).json({ success: true, message: "user fetch successfully", data: user })
 
     } catch (error) {
         console.error(error.message);
-        return res.status(500).json({ message: "User Not Found. Internal Server Error", error: error.message });
+
+        return res.status(500).json({ success: false, message: "User Not Found. Internal Server Error", error: error.message });
     }
 }
 module.exports = getLoggedUser;
