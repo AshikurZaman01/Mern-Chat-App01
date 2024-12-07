@@ -24,7 +24,9 @@ app.get("/", (req, res) => {
 });
 
 // router
-app.use("/api/users", require('./Routes/UserRoutes/userRouts'))
+app.use("/api/users", require('./Routes/UserRoutes/userRouts'));
+app.use("/api/chats", require('./Routes/ChatRoutes/chatRoutes'));
+app.use("/api/messages", require('./Routes/MessageRoutes/messageRoutes'));
 
 
 // Error handling middlewares

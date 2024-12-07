@@ -24,8 +24,9 @@ const isValidUser = async (req, res, next) => {
 
         req.body.userId = decode.userId;
         next();
+
     } catch (error) {
-        return res.status(401).json({ message: "Invalid or expired token", error: error.message });
+        return res.status(401).json({ success: false, message: "Invalid or expired token", error: error.message });
     }
 };
 
