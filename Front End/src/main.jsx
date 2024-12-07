@@ -10,6 +10,7 @@ import Home from './Components/Pages/Home/Home';
 import Login from './Components/Pages/Login/Login';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import { Toaster } from 'react-hot-toast';
+import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <ProtectedRoutes><Home></Home></ProtectedRoutes>,
       },
       {
         path: "/login",
