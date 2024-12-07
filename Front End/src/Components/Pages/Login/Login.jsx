@@ -1,6 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+    })
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        console.log(user);
+    }
+
     return (
         <div className="w-full h-screen bg-gradient-to-r from-green-400 via-teal-500 to-blue-500 flex justify-center items-center">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -10,6 +22,8 @@ const Login = () => {
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-600">Email Address</label>
                         <input
+                            value={user.email}
+                            onChange={(e) => setUser({ ...user, email: e.target.value })}
                             type="email"
                             id="email"
                             name="email"
@@ -22,6 +36,8 @@ const Login = () => {
                     <div>
                         <label htmlFor="password" className="block text-sm font-medium text-gray-600">Password</label>
                         <input
+                            value={user.password}
+                            onChange={(e) => setUser({ ...user, password: e.target.value })}
                             type="password"
                             id="password"
                             name="password"
