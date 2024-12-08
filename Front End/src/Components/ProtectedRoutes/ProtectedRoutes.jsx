@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { getLoggedUser } from "../../apiCall/usersApi/userApi";
+import { getAllUsers, getLoggedUser } from "../../apiCall/usersApi/userApi";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../redux/features/userSlice";
+import { setAllUsers, setUser } from "../../redux/features/userSlice";
 
 const ProtectedRoutes = ({ children }) => {
 
@@ -30,6 +30,20 @@ const ProtectedRoutes = ({ children }) => {
         }
     };
 
+    const allUsers = async () => {
+        try {
+            const response = await getAllUsers();
+
+            if (response.success) {
+
+                dispatch(setAllUsers(response.allUsers));
+                setLoading(false);
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
         const token = localStorage.getItem("token");
 
@@ -37,6 +51,7 @@ const ProtectedRoutes = ({ children }) => {
             navigate("/login");
         } else {
             getLogingUser();
+            allUsers();
         }
 
     }, [navigate]);

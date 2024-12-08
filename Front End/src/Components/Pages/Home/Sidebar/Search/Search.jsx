@@ -1,9 +1,5 @@
-import { useState } from "react";
 
-const Search = () => {
-    const [searchValue, setSearchValue] = useState("");
-
-    console.log(searchValue);
+const Search = ({ searchValue, setSearchValue }) => {
 
     return (
         <div className="flex justify-center items-center py-8 px-2">
@@ -13,7 +9,7 @@ const Search = () => {
                     onChange={(e) => setSearchValue(e.target.value)}
                     type="text"
                     placeholder="Search..."
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
                     <svg

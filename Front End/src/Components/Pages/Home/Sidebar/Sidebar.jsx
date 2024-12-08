@@ -1,16 +1,23 @@
+import { useState } from "react";
 import Search from "./Search/Search"
 import UserList from "./UserList/UserList"
 
 const Sidebar = () => {
+
+    const [searchValue, setSearchValue] = useState("");
+
+
     return (
-        <div className="w-[23%] bg-red-400 py-[20px]">
+        <div className="w-[23%] shadow-md border border-gray-200 rounded-md">
 
             {/* search Section */}
-            <Search></Search>
+            <Search searchValue={searchValue} setSearchValue={setSearchValue}></Search>
             {/* search Section */}
 
             {/* user list Section */}
-            <UserList></UserList>
+            <div className="h-[70vh] pb-5  overflow-y-auto">
+                <UserList searchValue={searchValue}></UserList>
+            </div>
             {/* user list Section */}
 
         </div>

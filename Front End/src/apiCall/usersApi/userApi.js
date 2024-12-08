@@ -10,5 +10,16 @@ export const getLoggedUser = async () => {
         console.error("Error fetching logged user:", error);
         throw error;
     }
+}
 
+export const getAllUsers = async () => {
+    try {
+
+        const response = await axiosInstances.get('http://localhost:3000/api/users/getAllUsers');
+        return response.data;
+
+    } catch (error) {
+        console.error("Error fetching logged user:", error);
+        throw error;
+    }
 }

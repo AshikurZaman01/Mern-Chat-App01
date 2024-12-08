@@ -4,12 +4,12 @@ const getAllUsers = async (req, res) => {
 
     try {
 
-        const allUsers = await UserModel.find({ _id: { $ne: req.body.userId } });
+        const allUsers = await UserModel.find({ _id: { $ne: req.body.userId } }).sort({ createdAt: -1 })
 
-        res.status(200).json({ message: "All users", allUsers })
+        res.status(200).json({ success: true, message: "All users", allUsers })
 
     } catch (error) {
-        res.status(500).json({ message: "Error", error })
+        res.status(500).json({ success: false, message: "Error", error })
     }
 
 }
