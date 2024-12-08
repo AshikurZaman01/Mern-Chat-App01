@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { getLoggedUser } from "../../apiCall/usersApi/userApi";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../redux/features/userSlice";
 
 const ProtectedRoutes = ({ children }) => {
 
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null);
+
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.user);
 
 
     const getLogingUser = async () => {
@@ -15,8 +19,7 @@ const ProtectedRoutes = ({ children }) => {
             const response = await getLoggedUser();
 
             if (response.success) {
-                console.log(response.data);
-                setUser(response.data);
+                dispatch(setUser(response.data));
                 setLoading(false);
             } else {
                 navigate("/login");
